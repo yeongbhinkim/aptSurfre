@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class MyHomePriceDAOImpl implements MyHomePriceDAO {
    * @return
    */
   @Override
-  public List<MyHomePrice> selectMyHomePriceList(MyHomePriceFilterCondition myHomePriceFilterCondition) {
+  public List<MyHomePrice> selectMyHomePriceList(@Validated MyHomePriceFilterCondition myHomePriceFilterCondition) {
     StringBuffer sql = new StringBuffer();
 //    log.info("myHomePriceFilterCondition = {}", myHomePriceFilterCondition);
     sql.append(" SELECT B.* ");
@@ -76,7 +77,7 @@ public class MyHomePriceDAOImpl implements MyHomePriceDAO {
    * @return
    */
   @Override
-  public int totalCount(MyHomePriceFilterCondition myHomePriceFilterCondition) {
+  public int totalCount(@Validated MyHomePriceFilterCondition myHomePriceFilterCondition) {
     StringBuffer sql = new StringBuffer();
     log.info("myHomePriceFilterCondition123 = {}", myHomePriceFilterCondition);
     sql.append(" SELECT count(*) as COUNT FROM( ");

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class MyHomePriceSVCImpl implements MyHomePriceSVC {
    * @return
    */
   @Override
-  public List<MyHomePrice> MyHomePriceList(MyHomePriceFilterCondition myHomePriceFilterCondition) {
+  public List<MyHomePrice> MyHomePriceList(@Validated MyHomePriceFilterCondition myHomePriceFilterCondition) {
     return MyHomePriceDAO.selectMyHomePriceList(myHomePriceFilterCondition);
   }
 
@@ -38,7 +39,7 @@ public class MyHomePriceSVCImpl implements MyHomePriceSVC {
    * @return
    */
   @Override
-  public int totalCount(MyHomePriceFilterCondition myHomePriceFilterCondition) {
+  public int totalCount(@Validated MyHomePriceFilterCondition myHomePriceFilterCondition) {
     return MyHomePriceDAO.totalCount(myHomePriceFilterCondition);
   }
 
