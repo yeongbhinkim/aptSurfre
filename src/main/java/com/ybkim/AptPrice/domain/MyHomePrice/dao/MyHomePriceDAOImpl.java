@@ -27,7 +27,7 @@ public class MyHomePriceDAOImpl implements MyHomePriceDAO {
   @Override
   public List<MyHomePrice> selectMyHomePriceList(MyHomePriceFilterCondition myHomePriceFilterCondition) {
     StringBuffer sql = new StringBuffer();
-    log.info("myHomePriceFilterCondition = {}", myHomePriceFilterCondition);
+//    log.info("myHomePriceFilterCondition = {}", myHomePriceFilterCondition);
     sql.append(" SELECT B.* ");
     sql.append("  ,GET_CONTRACT(B.CITY,B.STREET,B.BON_BUN,B.BU_BUN,B.DAN_GI_MYEONG,B.SQUARE_METER,B.LAYER,B.CONSTRUCTION_DATE) AS CONTRACT  ");
     sql.append("  ,GET_TRANSACTIONCOUNT_LIST(B.CITY,B.STREET,B.BON_BUN,B.BU_BUN,B.DAN_GI_MYEONG,B.SQUARE_METER,B.LAYER,B.CONSTRUCTION_DATE) AS TRANSACTIONCOUNTLIST ");
@@ -65,7 +65,7 @@ public class MyHomePriceDAOImpl implements MyHomePriceDAO {
         myHomePriceFilterCondition.getEndRec()
     );
 
-    log.info("list123 = {}", list);
+//    log.info("list123 = {}", list);
 
     return list;
   }
