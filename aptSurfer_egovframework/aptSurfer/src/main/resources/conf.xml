@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd" >
+<properties>
+	<comment>파일업로드 기본경로</comment>
+	<!-- 파일저장 경로 (개발)-->
+	<entry key="imagePath">C:/premier/attachFiles/images/</entry>
+	<entry key="filePath">C:/premier/attachFiles/files/</entry>
+	<entry key="templatePath">C:/premier/attachFiles/templates/</entry>
+	
+</properties>

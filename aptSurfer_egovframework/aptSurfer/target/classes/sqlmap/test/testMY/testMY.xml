@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="egovframework.aptSurfer.mysql.testMY.mapper.TESTMYMapper">
+
+
+<insert id="insertTESTmy" parameterType="json">
+    INSERT INTO `사용자` (`사용자ID`, `이름`, `이메일`, `전화번호`, `비밀번호`)
+    VALUES ('99', '김빈빈', 'Z@korea.com', '000-0000-0000', '대전시99광덕구')
+</insert>
+
+
+
+<!-- 	<insert id="insertTESTmy" parameterType="json"> -->
+	
+<!-- 		INSERT INTO `mydb`.`사용자` -->
+<!-- 			(`사용자ID`,`이름`,	`이메일`,	`전화번호`,`비밀번호`) -->
+<!-- 		VALUES -->
+<!-- 			('99','김빈빈','Z@korea.com','000-0000-0000','대전시99광덕구') -->
+	
+<!-- 	</insert> -->
+	
+</mapper>

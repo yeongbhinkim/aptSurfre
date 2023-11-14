@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="egovframework.aptSurfer.content.mapper.ContentMapper">
+
+	<!-- APT 상세조회 폼 -->
+	<select id="selectMyHomePriceDetailForm" parameterType="json" resultType="json">
+		SELECT * FROM APT
+		WHERE APT_ID = #{APT_ID} 
+	</select>
+	
+	<!-- APT 상세조회 리스트 -->
+	<select id="selectMyHomePriceDetail" parameterType="json" resultType="json">
+		SELECT A.* 
+		FROM APT A, (SELECT * 
+		             FROM APT B 
+		             WHERE APT_ID = #{APT_ID} ) B 
+		WHERE 1 = 1 
+		AND A.CITY LIKE '%'||B.CITY||'%' 
+		AND A.STREET LIKE '%'||B.STREET||'%' 
+		AND A.BON_BUN LIKE '%'||B.BON_BUN||'%' 
+		AND A.BU_BUN LIKE '%'||B.BU_BUN||'%' 
+		AND A.DAN_GI_MYEONG LIKE '%'||B.DAN_GI_MYEONG||'%' 
+		AND A.SQUARE_METER LIKE '%'||B.SQUARE_METER||'%' 
+		AND A.LAYER LIKE '%'||B.LAYER||'%' 
+		AND A.CONSTRUCTION_DATE LIKE '%'||B.CONSTRUCTION_DATE||'%' 
+		ORDER BY A.CONTRACT_DATE||LPAD(A.CONTRACT_DAY, 2, '0') DESC 
+	</select>
+	
+	<!-- APT 상세조회 ScatterChart -->
+	<select id="selectMyHomePriceScatterChart" parameterType="json" resultType="json">
+		SELECT TO_NUMBER(A.CONTRACT_DATE||LPAD(A.CONTRACT_DAY, 2, '0')) as "x" , TO_NUMBER(TRIM(REPLACE(A.AMOUNT, ',', ''))) as "y"  
+		FROM APT A, (SELECT * 
+		             FROM APT B 
+		             WHERE APT_ID = #{APT_ID} ) B 
+		WHERE 1 = 1 
+		AND A.CITY LIKE '%'||B.CITY||'%' 
+		AND A.STREET LIKE '%'||B.STREET||'%' 
+		AND A.BON_BUN LIKE '%'||B.BON_BUN||'%' 
+		AND A.BU_BUN LIKE '%'||B.BU_BUN||'%' 
+		AND A.DAN_GI_MYEONG LIKE '%'||B.DAN_GI_MYEONG||'%' 
+		AND A.SQUARE_METER LIKE '%'||B.SQUARE_METER||'%' 
+		AND A.LAYER LIKE '%'||B.LAYER||'%' 
+		AND A.CONSTRUCTION_DATE LIKE '%'||B.CONSTRUCTION_DATE||'%' 
+	</select>
+
+</mapper>
